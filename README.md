@@ -20,7 +20,7 @@
 
 ## Full Lab Setup
  Expands on Quick Lab setup to also include PKI and NDES servers
- - [] To be completed
+ - [ ] To be completed
 
 ## Notes
  * Best viewed in Microsoft Visual Studio Code with Colorful Comments extension installed
