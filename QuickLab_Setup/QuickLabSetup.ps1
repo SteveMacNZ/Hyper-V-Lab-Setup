@@ -50,10 +50,10 @@ Add-VMDvdDrive -VMName 'WIN10-PC02'
 Rename-computer -newname SVR-DC01
 New-NetIPAddress -InterfaceAlias Ethernet -IPAddress 172.50.50.1 -DefaultGateway 172.50.50.254 -AddressFamily IPv4 -PrefixLength 24
 Set-DnsClientServerAddress -InterfaceAlias Ethernet -ServerAddresses ("172.50.50.1","127.0.0.1","8.8.8.8")
-Set-ItemProperty -Path "HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name RegisteredOrganization -Value "Fujitsu NZ DemoLab"
+Set-ItemProperty -Path "HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name RegisteredOrganization -Value "DemoLab NZ"
 $Make = Get-WmiObject Win32_ComputerSystem | Select-object -ExpandProperty Manufacturer
 $Model = Get-WmiObject Win32_ComputerSystem | Select-object -ExpandProperty Model
-$Logo = 'C:\Windows\System32\oobe\FujitsuLogo.bmp'
+$Logo = 'C:\Windows\System32\oobe\DemoLabLogo.bmp'
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" -Name Manufacturer -PropertyType String -Value $Make -Force
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" -Name Model -PropertyType String -Value $Model -Force
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" -Name Logo -PropertyType String -Value $Logo -Force
@@ -130,38 +130,38 @@ New-ADComputer -Name "WIN10-PC01" -SamAccountName "WIN10-PC01" -Description "Win
 $LabPwd = "EnterPasswordhereforlabusers!"
 
 New-ADUser -Name "Joe Bloggs" -SamAccountName "bloggsj" -UserPrincipalName "joe.bloggs@demo.lab.internal" -GivenName "Joe" -Surname "Bloggs" -DisplayName "Joe Bloggs" `
-    -Description "Fujitsu Support Account" -Department "Contractor" -Country "NZ" -City "Wellington" -Company "Fujitsu NZ" -EmailAddres "joe.bloggs@demo.lab.internal" `
-    -StreetAddress "Fujitsu Tower, 141 The Terrace, Wellington, New Zealand 6011" -Title "Senior Technical Consultant" -Office "Fujitsu Tower" -Enabled $True -ChangePasswordAtLogon $False `
+    -Description "Support Account" -Department "Contractor" -Country "NZ" -City "Wellington" -Company "DemoLab NZ" -EmailAddres "joe.bloggs@demo.lab.internal" `
+    -StreetAddress "123 Somename Road, Wellington, New Zealand 6011" -Title "Senior Technical Consultant" -Office "DemoLab Tower" -Enabled $True -ChangePasswordAtLogon $False `
     -PasswordNeverExpires $False -Path "OU=Standard Users,OU=Managed Users,DC=demo,DC=lab,DC=internal" `
     -AccountPassword (convertto-securestring $LabPwd -AsPlainText -Force)
 
 New-ADUser -Name "Adm Joe Bloggs" -SamAccountName "adm_bloggsj" -UserPrincipalName "adm_joe.bloggs@demo.lab.internal" -GivenName "Joe" -Surname "Bloggs" -DisplayName "Joe Bloggs [Admin]" `
-    -Description "Fujitsu Support Account" -Department "Contractor" -Country "NZ" -City "Wellington" -Company "Fujitsu NZ" -EmailAddres "adm_joe.bloggs@demo.lab.internal" `
-    -StreetAddress "Fujitsu Tower, 141 The Terrace, Wellington, New Zealand 6011" -Title "Senior Technical Consultant" -Office "Fujitsu Tower" -Enabled $True -ChangePasswordAtLogon $False `
+    -Description "Support Account" -Department "Contractor" -Country "NZ" -City "Wellington" -Company "DemoLab NZ" -EmailAddres "adm_joe.bloggs@demo.lab.internal" `
+    -StreetAddress "123 Somename Road, Wellington, New Zealand 6011" -Title "Senior Technical Consultant" -Office "DemoLab Tower" -Enabled $True -ChangePasswordAtLogon $False `
     -PasswordNeverExpires $False -Path "OU=Administrative Users,OU=Managed Users,DC=demo,DC=lab,DC=internal" `
     -AccountPassword (convertto-securestring $LabPwd -AsPlainText -Force)
     
 New-ADUser -Name "Steve McIntyre" -SamAccountName "mcintyres" -UserPrincipalName "steve.mcintyre@demo.lab.internal" -GivenName "Steve" -Surname "McIntyre" -DisplayName "Steve McIntyre" `
-    -Description "Fujitsu Support Account" -Department "Contractor" -Country "NZ" -City "Wellington" -Company "Fujitsu NZ" -EmailAddres "steve.mcintyre@demo.lab.internal" `
-    -StreetAddress "Fujitsu Tower, 141 The Terrace, Wellington, New Zealand 6011" -Title "Senior Technical Consultant" -Office "Fujitsu Tower" -Enabled $True -ChangePasswordAtLogon $False `
+    -Description "Support Account" -Department "Contractor" -Country "NZ" -City "Wellington" -Company "DemoLab NZ" -EmailAddres "steve.mcintyre@demo.lab.internal" `
+    -StreetAddress "123 Somename Road, Wellington, New Zealand 6011" -Title "Senior Technical Consultant" -Office "DemoLab Tower" -Enabled $True -ChangePasswordAtLogon $False `
     -PasswordNeverExpires $False -Path "OU=Standard Users,OU=Managed Users,DC=demo,DC=lab,DC=internal" `
     -AccountPassword (convertto-securestring $LabPwd -AsPlainText -Force)
 
 New-ADUser -Name "Adm Steve McIntyre" -SamAccountName "adm_mcintyres" -UserPrincipalName "adm_steve.mcintyre@demo.lab.internal" -GivenName "Steve" -Surname "McIntyre" -DisplayName "Steve McIntyre [Admin]" `
-    -Description "Fujitsu Support Account" -Department "Contractor" -Country "NZ" -City "Wellington" -Company "Fujitsu NZ" -EmailAddres "adm_steve.mcintyre@demo.lab.internal" `
-    -StreetAddress "Fujitsu Tower, 141 The Terrace, Wellington, New Zealand 6011" -Title "Senior Technical Consultant" -Office "Fujitsu Tower" -Enabled $True -ChangePasswordAtLogon $False `
+    -Description "Support Account" -Department "Contractor" -Country "NZ" -City "Wellington" -Company "DemoLab NZ" -EmailAddres "adm_steve.mcintyre@demo.lab.internal" `
+    -StreetAddress "123 Somename Road, Wellington, New Zealand 6011" -Title "Senior Technical Consultant" -Office "DemoLab Tower" -Enabled $True -ChangePasswordAtLogon $False `
     -PasswordNeverExpires $False -Path "OU=Administrative Users,OU=Managed Users,DC=demo,DC=lab,DC=internal" `
     -AccountPassword (convertto-securestring $LabPwd -AsPlainText -Force)
 
 New-ADUser -Name "Fred Flintstone" -SamAccountName "flintstonef" -UserPrincipalName "fred.flintstone@demo.lab.internal" -GivenName "Fred" -Surname "Flintstone" -DisplayName "Fred Flintstone" `
     -Description "CEO" -Department "SLT" -Country "NZ" -City "Wellington" -Company "Demo Lab Inc." -EmailAddres "fred.flintstone@demo.lab.internal" `
-    -StreetAddress "Fujitsu Tower, 141 The Terrace, Wellington, New Zealand 6011" -Title "Cheif Executive Officer" -Office "Fujitsu Tower" -Enabled $True -ChangePasswordAtLogon $False `
+    -StreetAddress "123 Somename Road, Wellington, New Zealand 6011" -Title "Cheif Executive Officer" -Office "DemoLab Tower" -Enabled $True -ChangePasswordAtLogon $False `
     -PasswordNeverExpires $False -Path "OU=Standard Users,OU=Managed Users,DC=demo,DC=lab,DC=internal" `
     -AccountPassword (convertto-securestring $LabPwd -AsPlainText -Force)
 
 New-ADUser -Name "Barney Rubble" -SamAccountName "rubbleb" -UserPrincipalName "barney.rubble@demo.lab.internal" -GivenName "Barney" -Surname "Rubble" -DisplayName "Barney Rubble" `
     -Description "CTO" -Department "SLT" -Country "NZ" -City "Wellington" -Company "Demo Lab Inc." -EmailAddres "barney.rubble@demo.lab.internal" `
-    -StreetAddress "Fujitsu Tower, 141 The Terrace, Wellington, New Zealand 6011" -Title "Cheif Technical Officer" -Office "Fujitsu Tower" -Enabled $True -ChangePasswordAtLogon $False `
+    -StreetAddress "123 Somename Road, Wellington, New Zealand 6011" -Title "Cheif Technical Officer" -Office "DemoLab Tower" -Enabled $True -ChangePasswordAtLogon $False `
     -PasswordNeverExpires $False -Path "OU=Standard Users,OU=Managed Users,DC=demo,DC=lab,DC=internal" `
     -AccountPassword (convertto-securestring $LabPwd -AsPlainText -Force)
 
@@ -171,10 +171,10 @@ Get-ADForest | Set-ADForest -UPNSuffixes @{add="M365x993667.onmicrosoft.com"}
 Rename-computer -newname SVR-MGT
 New-NetIPAddress -InterfaceAlias Ethernet -IPAddress 172.50.50.2 -DefaultGateway 172.50.50.254 -AddressFamily IPv4 -PrefixLength 24
 Set-DnsClientServerAddress -InterfaceAlias Ethernet -ServerAddresses ("172.50.50.1","8.8.8.8")
-Set-ItemProperty -Path "HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name RegisteredOrganization -Value "Fujitsu NZ DemoLab"
+Set-ItemProperty -Path "HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name RegisteredOrganization -Value "DemoLab NZ"
 $Make = Get-WmiObject Win32_ComputerSystem | Select-object -ExpandProperty Manufacturer
 $Model = Get-WmiObject Win32_ComputerSystem | Select-object -ExpandProperty Model
-$Logo = 'C:\Windows\System32\oobe\FujitsuLogo.bmp'
+$Logo = 'C:\Windows\System32\oobe\DemoLabLogo.bmp'
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" -Name Manufacturer -PropertyType String -Value $Make -Force
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" -Name Model -PropertyType String -Value $Model -Force
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" -Name Logo -PropertyType String -Value $Logo -Force
@@ -184,10 +184,10 @@ add-computer –domainname demo.lab.internal -Credential (Get-Credential) -resta
     
  #& Win 10 VM
  Rename-computer -newname WIN10-PC01
- Set-ItemProperty -Path "HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name RegisteredOrganization -Value "Fujitsu NZ DemoLab"
+ Set-ItemProperty -Path "HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name RegisteredOrganization -Value "DemoLab NZ"
  $Make = Get-WmiObject Win32_ComputerSystem | Select-object -ExpandProperty Manufacturer
  $Model = Get-WmiObject Win32_ComputerSystem | Select-object -ExpandProperty Model
- $Logo = 'C:\Windows\System32\oobe\FujitsuLogo.bmp'
+ $Logo = 'C:\Windows\System32\oobe\DemoLabLogo.bmp'
  New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" -Name Manufacturer -PropertyType String -Value $Make -Force
  New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" -Name Model -PropertyType String -Value $Model -Force
  New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" -Name Logo -PropertyType String -Value $Logo -Force
