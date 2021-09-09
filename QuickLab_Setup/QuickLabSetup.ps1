@@ -166,6 +166,7 @@ New-ADUser -Name "Barney Rubble" -SamAccountName "rubbleb" -UserPrincipalName "b
     -AccountPassword (convertto-securestring $LabPwd -AsPlainText -Force)
 
 Get-ADForest | Set-ADForest -UPNSuffixes @{add="M365x993667.onmicrosoft.com"}
+New-ADReplicationSubnet -Name “172.50.50.0/24” -Site "Default-First-Site-Name"
     
 #& MGT VM
 Rename-computer -newname SVR-MGT
