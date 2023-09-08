@@ -28,7 +28,8 @@
      *  Extends AD Schema for Windows LAPS 
      *  Imports Group Policies from export [CIS Baseline, LAPS and rename local admin]
    *  **Invoke-InstallDSCModules.ps1** - Installs DSC modules from PSGallery based on the server role  
-   - [ ] **DSC Scripts** - Desired State Configuration  (ToDo)      
+   - [ ] **DSC Scripts** - Desired State Configuration  (ToDo)
+   - [ ] **Windows 10/11 ParentDisk** - Script to create Windows 10/11 Parent Disk (ToDo) [Using https://github.com/x0nn/Convert-WindowsImage]   
 
 ## Notes
  * Best viewed in Microsoft Visual Studio Code with Colorful Comments extension installed
