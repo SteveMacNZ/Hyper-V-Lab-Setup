@@ -27,7 +27,7 @@
      *  Creates NDES Service Account 
      *  Extends AD Schema for Windows LAPS 
      *  Imports Group Policies from export [CIS Baseline, LAPS and rename local admin] 
-     [ ] **DCS Scripts** (ToDo)       
+     - [ ] **DCS Scripts** (ToDo)       
 
 ## Notes
  * Best viewed in Microsoft Visual Studio Code with Colorful Comments extension installed
