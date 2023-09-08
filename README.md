@@ -11,7 +11,7 @@
  * LabConfig
    * **LabConfig.ps1** - replaces the default LabConfig.ps1 provided in the MSLAB kit (rename orginal before replacing)
    * **Add-DesktopInfo.ps1** - Mounts parent disk and copies DesktopInfo to C:\ProgramData\DesktopInfo and creates startup shortcut
-   <br> run after comletion of 2_CreateParentDiesks.ps1
+   <br> run after comletion of 2_CreateParentDisks.ps1
  * PostSetup - contains scripts to be run post lab configuration
    * **Invoke-InstallWindowsTerminal.ps1** - to install Windows Terminal on Servers https://github.com/microsoft/terminal
      <br> Create WindowsTerminal Folder under .\Temp\ToolsVHD\Installers copy ps1 script and required modules from terminal_preinstallkit
@@ -27,7 +27,7 @@
      *  Creates NDES Service Account 
      *  Extends AD Schema for Windows LAPS 
      *  Imports Group Policies from export [CIS Baseline, LAPS and rename local admin] 
-            
+     [ ] **DCS Scripts** (ToDo)       
 
 ## Notes
  * Best viewed in Microsoft Visual Studio Code with Colorful Comments extension installed
