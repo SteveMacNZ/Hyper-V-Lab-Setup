@@ -26,8 +26,9 @@
      *  Creates User accounts [Standard and Admin Accounts] 
      *  Creates NDES Service Account 
      *  Extends AD Schema for Windows LAPS 
-     *  Imports Group Policies from export [CIS Baseline, LAPS and rename local admin] 
-     - [ ] **DCS Scripts** (ToDo)       
+     *  Imports Group Policies from export [CIS Baseline, LAPS and rename local admin]
+   *  **Invoke-InstallDSCModules.ps1** - Installs DSC modules from PSGallery based on the server role  
+   - [ ] **DSC Scripts** - Desired State Configuration  (ToDo)      
 
 ## Notes
  * Best viewed in Microsoft Visual Studio Code with Colorful Comments extension installed
