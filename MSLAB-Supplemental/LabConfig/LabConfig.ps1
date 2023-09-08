@@ -38,11 +38,11 @@ $LabConfig=@{
         vTPM=$true;                              # (Optional) if $true, vTPM will be enabled for virtual machine. Gen2 only.
         Generation=2;                            # (Optional) set VM generation to 2
         DisableWCF=$true;                        # (Optional) If $True, then Disable Windows Consumer Features registry is added= no consumer apps in start menu.
-        AddToolsVHD=$True                        # Add Tools VHD to VM
+        AddToolsVHD=$true                        # Add Tools VHD to VM
     }
 }
 
 #& Management LabVM
-$LABConfig.VMs += @{ VMName = 'SVR-MGT'; Configuration = 'Simple'; ParentVHD = 'Win2022_G2.vhdx'; MemoryStartupBytes= 1GB ; vTPM=$true ; DisableWCF=$true ; Generation=2 ; VMProcessorCount=2 ; AddToolsVHD=$True }
+$LABConfig.VMs += @{ VMName = 'SVR-MGT'; Configuration = 'Simple'; ParentVHD = 'Win2022_G2.vhdx'; MemoryStartupBytes= 1GB ; vTPM=$true ; DisableWCF=$true ; Generation=2 ; VMProcessorCount=2 ; AddToolsVHD=$true }
 #& Windows Admin Centre LabVM
-$LABConfig.VMs += @{ VMName = 'SVR-WAC'; Configuration = 'Simple'; ParentVHD = 'Win2022_G2.vhdx'; MemoryStartupBytes= 1GB ; vTPM=$true ; DisableWCF=$true ; Generation=2 ; VMProcessorCount=2 ; AddToolsVHD=$True }
+$LABConfig.VMs += @{ VMName = 'SVR-WAC'; Configuration = 'Simple'; ParentVHD = 'Win2022_G2.vhdx'; MemoryStartupBytes= 1GB ; vTPM=$true ; DisableWCF=$true ; Generation=2 ; VMProcessorCount=2 ; AddToolsVHD=$true }

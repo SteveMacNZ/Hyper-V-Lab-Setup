@@ -10,7 +10,10 @@
  * LabConfig
    * LabConfig.ps1 ==> replaces the default LabConfig.ps1 provided in the MSLAB kit (rename orginal before replacing)
  * PostSetup - contains scripts to be run post lab configuration
-   * What?
+   * Invoke-InstallWindowsTerminal.ps1 ==> to install Windows Terminal on Servers https://github.com/microsoft/terminal
+   * CIS-Server2022.zip ==> CIS baseline group policies for Server 2022 + WMI Filters [extract to root of ToolsVHD]
+   * GPOBackup.zip ==> Group Policy exports for LAPs & Renaming Local Admin account [extract to root of ToolsVHD]
+   * Invoke-PostLabSetup.ps1 ==> Run on DC after installing to configure OUs, Groups, Users & Import GPO Backups
 
 
 
