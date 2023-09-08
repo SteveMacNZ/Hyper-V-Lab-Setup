@@ -16,15 +16,15 @@
    * **CIS-Server2022.zip** - CIS baseline group policies for Server 2022 + WMI Filters [extract to root of ToolsVHD]
    * **GPOBackup.zip** - Group Policy exports for LAPs & Renaming Local Admin account [extract to root of ToolsVHD]
    * **Invoke-PostLabSetup.ps1** - Run on DC after installing to configure OUs, Groups, Users & Import GPO Backups
-     <br>  - Sets Custom UPN if needed for AD Connect Sync to M365   
-     <br>  - Creates OUs  
-     <br>  - Creates Licensing Groups  
-     <br>  - Creates NDES groups  
-     <br>  - Creates Windows LAPS groups
-     <br>  - Creates User accounts [Standard and Admin Accounts] 
-     <br>  - Creates NDES Service Account 
-     <br>  - Extends AD Schema for Windows LAPS 
-     <br>  - Imports Group Policies from export [CIS Baseline, LAPS and rename local admin] 
+     * Sets Custom UPN if needed for AD Connect Sync to M365   
+     *  Creates OUs  
+     *  Creates Licensing Groups  
+     *  Creates NDES groups  
+     *  Creates Windows LAPS groups
+     *  Creates User accounts [Standard and Admin Accounts] 
+     *  Creates NDES Service Account 
+     *  Extends AD Schema for Windows LAPS 
+     *  Imports Group Policies from export [CIS Baseline, LAPS and rename local admin] 
             
 
 ## Notes
