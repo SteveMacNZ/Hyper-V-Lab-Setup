@@ -2,9 +2,9 @@
 ## Overview
  Additional files and PowerShell scripts to be used in conjuntction with the MSLAB kit https://aka.ms/mslab/download
 
-## MSLAB-Supplmental
+## MSLAB-Supplemental
  Contains customisations and additional configuration scripts to be used with MSLAB:
- * DesktopInfo 
+ * DesktopInfo https://www.glenn.delahoy.com/desktopinfo/
    * desktopinfo.ini ==> customised configuration file for DesktopInfo
    * Fujitsu-Logo-transparent.png ==> logo used in configuration file  
  * LabConfig
