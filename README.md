@@ -5,7 +5,7 @@
 ## MSLAB-Supplemental
  Contains customisations and additional configuration scripts to be used with MSLAB:
  * DesktopInfo https://www.glenn.delahoy.com/desktopinfo/
-     Download and extract zip file copy to .\Temp\ToolsVHD\Installers copy ini and png into folder to apply customisation
+     /n Download and extract zip file copy to .\Temp\ToolsVHD\Installers copy ini and png into folder to apply customisation
    * desktopinfo.ini ==> customised configuration file for DesktopInfo
    * Fujitsu-Logo-transparent.png ==> logo used in configuration file  
  * LabConfig
