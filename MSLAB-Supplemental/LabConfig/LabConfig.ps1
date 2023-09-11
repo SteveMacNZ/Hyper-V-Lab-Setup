@@ -43,6 +43,24 @@ $LabConfig=@{
 }
 
 #& Management LabVM
-$LABConfig.VMs += @{ VMName = 'SVR-MGT'; Configuration = 'Simple'; ParentVHD = 'Win2022_G2.vhdx'; MemoryStartupBytes= 1GB ; vTPM=$true ; DisableWCF=$true ; Generation=2 ; VMProcessorCount=2 ; AddToolsVHD=$true }
+$LABConfig.VMs += @{ VMName = 'SVR-MGT'; Configuration = 'Simple'; ParentVHD = 'Win2022_G2.vhdx'; MemoryStartupBytes= 2GB ; vTPM=$true ; DisableWCF=$true ; Generation=2 ; VMProcessorCount=2 ; AddToolsVHD=$true }
 #& Windows Admin Centre LabVM
-$LABConfig.VMs += @{ VMName = 'SVR-WAC'; Configuration = 'Simple'; ParentVHD = 'Win2022_G2.vhdx'; MemoryStartupBytes= 1GB ; vTPM=$true ; DisableWCF=$true ; Generation=2 ; VMProcessorCount=2 ; AddToolsVHD=$true }
+$LABConfig.VMs += @{ VMName = 'SVR-WAC'; Configuration = 'Simple'; ParentVHD = 'Win2022_G2.vhdx'; MemoryStartupBytes= 2GB ; vTPM=$true ; DisableWCF=$true ; Generation=2 ; VMProcessorCount=2 ; AddToolsVHD=$true }
+
+<# Uncomment to Create Windows Client Lab VMs
+#& Create 2x Windows 11 VMs
+1..2 | ForEach-Object { 
+    $VMNames="CLI-WIN-";                         # Here you can bulk edit name of 2 VMs created. In this case will be CLI-WIN-1,CLI-WIN-2 created
+    $LABConfig.VMs += @{
+        VMName = "$VMNames$_" ;
+        Configuration = 'Simple' ;               # Simple/S2D/Shared/Replica
+        ParentVHD = 'Windows11Pro.vhdx';         # VHD Name from .\ParentDisks folder
+        VMProcessorCount=2;                      # Set VMs to 2 VCPUs
+        MemoryStartupBytes= 2GB;                 # Startup memory size
+        vTPM=$true;                              # (Optional) if $true, vTPM will be enabled for virtual machine. Gen2 only.
+        Generation=2;                            # (Optional) set VM generation to 2
+        DisableWCF=$true;                        # (Optional) If $True, then Disable Windows Consumer Features registry is added= no consumer apps in start menu.
+
+    }
+}
+#>

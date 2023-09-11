@@ -10,8 +10,9 @@
    * **Fujitsu-Logo-transparent.png** - logo used in configuration file  
  * LabConfig
    * **LabConfig.ps1** - replaces the default LabConfig.ps1 provided in the MSLAB kit (rename orginal before replacing)
-   * **Add-DesktopInfo.ps1** - Mounts parent disk and copies DesktopInfo to C:\ProgramData\DesktopInfo and creates startup shortcut
-   <br> run after comletion of 2_CreateParentDisks.ps1
+   * **Add-DesktopInfo.ps1** - Mounts parent disk and copies DesktopInfo to C:\ProgramData\DesktopInfo and creates startup shortcut [run after comletion of 2_CreateParentDisks.ps1]
+   * **New-WindowsClientParents.ps1** - Creates Windows 10/11 Parent Image  [Using https://github.com/x0nn/Convert-WindowsImage save to x0nn folder] 
+   * **Set-VMSettings.ps1** - Run after deploying lab using .\Deploy.ps1 to set VM Min/Max RAM and VM behaviour
  * PostSetup - contains scripts to be run post lab configuration
    * **Invoke-InstallWindowsTerminal.ps1** - to install Windows Terminal on Servers https://github.com/microsoft/terminal
      <br> Create WindowsTerminal Folder under .\Temp\ToolsVHD\Installers copy ps1 script and required modules from terminal_preinstallkit
@@ -29,7 +30,7 @@
      *  Imports Group Policies from export [CIS Baseline, LAPS and rename local admin]
    *  **Invoke-InstallDSCModules.ps1** - Installs DSC modules from PSGallery based on the server role  
    - [ ] **DSC Scripts** - Desired State Configuration  (ToDo)
-   - [ ] **Windows 10/11 ParentDisk** - Script to create Windows 10/11 Parent Disk (ToDo) [Using https://github.com/x0nn/Convert-WindowsImage]   
+  
 
 ## Notes
  * Best viewed in Microsoft Visual Studio Code with Colorful Comments extension installed
