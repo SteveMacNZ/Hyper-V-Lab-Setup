@@ -40,7 +40,7 @@ Param (
 #Import-Module ActiveDirectory
 
 #& Includes - Scripts & Modules
-#. Get-CommonFunctions.ps1                                 # Include Common Functions
+. Get-CommonFunctions.ps1                                                           # Include Common Functions
 
 #endregion
 #region -------------------------------------------------------[Declarations]------------------------------------------------------
@@ -64,91 +64,6 @@ $Script:GUID        = '2b45ab63-020d-476f-a480-1a3bd5ae9c1f'                    
 #endregion
 #region -------------------------------------------------------[Functions]---------------------------------------------------------
 
-Function Get-Now{
-    # PowerShell Method - uncomment below is .NET is unavailable
-    #$Script:Now = (get-date).tostring("[dd/MM HH:mm:ss:ffff]")
-    # .NET Call which is faster than PowerShell Method - comment out below if .NET is unavailable
-    $Script:Now = ([DateTime]::Now).tostring("[dd/MM HH:mm:ss:ffff]")
-}
-  
-Function Write-InfoMsg ($message) {
-    Get-Now                                                                                       # Get currnet date timestamp
-    Write-Host "$Script:Now [INFORMATION] $message"                                               # Display Information messge
-    $null = $Script:Now                                                                           # Reset timestamp
-}
-Function Write-InfoHighlightedMsg ($message) {
-    Get-Now                                                                                       # Get currnet date timestamp
-    Write-Host "$Script:Now [INFORMATION] $message" -ForegroundColor Cyan                         # Display highlighted Information message
-    $null = $Script:Now                                                                           # Reset timestamp
-}
-    
-Function Write-WarningMsg ($message) {
-    Get-Now                                                                                       # Get currnet date timestamp
-    Write-Host "$Script:Now [WARNING] $message" -ForegroundColor Yellow                           # Display Warning Message
-    $null = $Script:Now                                                                           # Reset timestamp
-}
-    
-Function Write-SuccessMsg ($message) {
-    Get-Now                                                                                       # Get currnet date timestamp
-    Write-Host "$Script:Now [SUCCESS] $message" -ForegroundColor Green                            # Display Success Message
-    $null = $Script:Now                                                                           # Reset timestamp
-}
-    
-Function Write-ErrorMsg ($message) {
-    Get-Now                                                                                       # Get currnet date timestamp
-    Write-Host "$Script:Now [ERROR] $message" -ForegroundColor Red                                # Display Error Message
-    $null = $Script:Now                                                                           # Reset timestamp
-}
-
-function Show-ConsoleDialog{
-    <#
-    .SYNOPSIS
-      displays a console message with result returned into a switch statement
-    .DESCRIPTION
-      displays a console message with result returned into a switch statement
-    .PARAMETER Message
-      Message to be displayed
-    .PARAMETER Title
-      Title of the dialogue message
-    .PARAMETER Choice
-      choice options comma seperated    
-    .INPUTS
-      None
-    .OUTPUTS
-      returns result
-    .NOTES
-      $result = Show-ConsoleDialog -Message 'Restarting Server?' -Title 'Will restart server for maintenance' -Choice 'Yes','Cancel' ,'Later','Never','Always'
-      switch ($result){
-      'Yes'        { 'restarting' }
-      'Cancel'     { 'doing nothing' }
-      'Later'      { 'ok, later' }
-      'Never'      { 'will not ask again' }
-      'Always'     { 'restarting without notice now and ever' }
-      }
-    .LINK
-      None
-    .EXAMPLE
-      ^ . Show-ConsoleDialog -Message "What you want to Do?" -Title "Question" -Choice 'Yes', 'No', 'Cancel', 'Abort'
-      shows console dialog message with options
-    #>  
-      param(
-        [Parameter(Mandatory)]
-        [string]$Message,
-        [string]$Title = 'PowerShell',
-        # do not use choices with duplicate first letter
-        # submit any number of choices you want to offer
-        [string[]]
-        $Choice = ('Yes', 'No', 'Cancel')
-      )
-      
-      # turn choices into ChoiceDescription objects
-      $choices = foreach ($_ in $choice){
-        [System.Management.Automation.Host.ChoiceDescription]::new("&$_", $_)
-      }
-      
-      # translate the user choice into the name of the chosen choice
-      $choices[$host.ui.PromptForChoice($title, $message, $choices, 0)]. Label.Substring(1)
-}
 #endregion
 #region ------------------------------------------------------------[Classes]-------------------------------------------------------------
 
@@ -174,21 +89,26 @@ Start-Logging                                                                   
 
 $result = Show-ConsoleDialog -Message 'Choose the DSC Server Role' -Title 'DSC Server Role' -Choice 'Basic','Certificate','DC','NDES','Web'
 switch ($result){
-    'Basic'         { $ReqMods = @("xPSDesiredStateConfiguration", "xBitlocker", "ComputerManagementDsc", "WindowsDefender")
-                        Foreach ($mod in $ReqMods){Install-Module -Name $mod} 
-    }
-    'Certificate'   { $ReqMods = @("xPSDesiredStateConfiguration", "xBitlocker", "ComputerManagementDsc", "WindowsDefender", "ActiveDirectoryCSDsc")
-                        Foreach ($mod in $ReqMods){Install-Module -Name $mod}
-    }
-    'DC'            { $ReqMods = @("xPSDesiredStateConfiguration", "xBitlocker", "ComputerManagementDsc", "WindowsDefender", "ActiveDirectoryDsc", "DnsServerDsc")
-                        Foreach ($mod in $ReqMods){Install-Module -Name $mod}
-    }
-    'NDES'          { $ReqMods = @("xPSDesiredStateConfiguration", "xBitlocker", "ComputerManagementDsc", "WindowsDefender")
-                        Foreach ($mod in $ReqMods){Install-Module -Name $mod}
-    }
-    'Web'           { $ReqMods = @("xPSDesiredStateConfiguration", "xBitlocker", "ComputerManagementDsc", "WindowsDefender", "WebAdministrationDsc")
-                        Foreach ($mod in $ReqMods){Install-Module -Name $mod}
-    }
+  'Basic'{ 
+    $ReqMods = @("xPSDesiredStateConfiguration", "xBitlocker", "ComputerManagementDsc", "WindowsDefender")
+    Foreach ($mod in $ReqMods){Install-Module -Name $mod} 
+  }
+  'Certificate'{ 
+    $ReqMods = @("xPSDesiredStateConfiguration", "xBitlocker", "ComputerManagementDsc", "WindowsDefender", "ActiveDirectoryCSDsc")
+    Foreach ($mod in $ReqMods){Install-Module -Name $mod}
+  }
+  'DC'{ 
+    $ReqMods = @("xPSDesiredStateConfiguration", "xBitlocker", "ComputerManagementDsc", "WindowsDefender", "ActiveDirectoryDsc", "DnsServerDsc")
+    Foreach ($mod in $ReqMods){Install-Module -Name $mod}
+  }
+  'NDES'{ 
+    $ReqMods = @("xPSDesiredStateConfiguration", "xBitlocker", "ComputerManagementDsc", "WindowsDefender")
+    Foreach ($mod in $ReqMods){Install-Module -Name $mod}
+  }
+  'Web'{ 
+    $ReqMods = @("xPSDesiredStateConfiguration", "xBitlocker", "ComputerManagementDsc", "WindowsDefender", "WebAdministrationDsc")
+    Foreach ($mod in $ReqMods){Install-Module -Name $mod}
+  }
 }
 
 <#

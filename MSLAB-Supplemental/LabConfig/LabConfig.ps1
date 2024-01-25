@@ -63,4 +63,12 @@ $LABConfig.VMs += @{ VMName = 'SVR-WAC'; Configuration = 'Simple'; ParentVHD = '
 
     }
 }
+
+#& Create a domain joined (Offline Domain Join Blob) Windows 10 and Windows 11 Lab VM
+$LABConfig.VMs += @{ VMName = 'CLI-WIN-01'; Configuration = 'Simple'; ParentVHD = 'Windows11Pro.vhdx'; MemoryStartupBytes= 2GB ; vTPM=$true ; DisableWCF=$true ; Generation=2 ; VMProcessorCount=2 }
+$LABConfig.VMs += @{ VMName = 'CLI-WIN-02'; Configuration = 'Simple'; ParentVHD = 'Windows10Pro_22H2.vhdx'; MemoryStartupBytes= 2GB ; vTPM=$true ; DisableWCF=$true ; Generation=2 ; VMProcessorCount=2 }
+
+#& Create a non-domain joined LAB VM - Use this if wanting to Azure AD Domain Join a device
+$LABConfig.VMs += @{ VMName = 'CLI-WIN-03'; Configuration = 'Simple'; ParentVHD = 'Windows11Pro.vhdx'; MemoryStartupBytes= 2GB ; vTPM=$true ; DisableWCF=$true ; Generation=2 ; VMProcessorCount=2; Unattend="None" }
+
 #>
